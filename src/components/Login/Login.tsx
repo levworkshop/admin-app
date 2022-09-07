@@ -1,4 +1,9 @@
+import { useState } from "react";
+
 function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
         <>
             <h2>Login</h2>

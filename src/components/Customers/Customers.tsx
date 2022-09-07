@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface Customer {
     id: string;
     name: string;
@@ -6,7 +8,7 @@ interface Customer {
 }
 
 function Customers() {
-    const customers: Array<Customer> = [
+    const data: Array<Customer> = [
         {
             id: '1',
             name: 'bob',
@@ -14,6 +16,8 @@ function Customers() {
             phone: '03-5550000',
         }
     ];
+
+    const [customers, setCustomers] = useState(data);
 
     return (
         <>
