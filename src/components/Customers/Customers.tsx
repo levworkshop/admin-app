@@ -1,7 +1,28 @@
+interface Customer {
+    id: string;
+    name: string;
+    city: string;
+    phone: string;
+}
+
 function Customers() {
+    const customers: Array<Customer> = [
+        {
+            id: '1',
+            name: 'bob',
+            city: 'Netanya',
+            phone: '03-5550000',
+        }
+    ];
+
     return (
         <>
             <h2>Customers</h2>
+
+            {
+                customers.length === 0 ?
+                    <div>No customers yet</div> : null
+            }
 
             <table className="table">
                 <thead>
@@ -13,12 +34,16 @@ function Customers() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>bob</td>
-                        <td>Netanya</td>
-                        <td>03-5550000</td>
-                    </tr>
+                    {
+                        customers.map(customer =>
+                            <tr key={customer.id}>
+                                <td>{customer.id}</td>
+                                <td>{customer.name}</td>
+                                <td>{customer.city}</td>
+                                <td>{customer.phone}</td>
+                            </tr>
+                        )
+                    }
                 </tbody>
             </table>
 
