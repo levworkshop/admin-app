@@ -6,8 +6,22 @@ function SignUp() {
     const [password, setPassword] = useState('');
 
     function submit() {
-        // todo: replace with an API call to server
-        console.log('submit data');
+        const data = {
+            name,
+            email,
+            password,
+        };
+
+        fetch('http://localhost:3000/users/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => {
+                console.log('registered')
+            })
     }
 
     return (
