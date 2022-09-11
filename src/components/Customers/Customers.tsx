@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Customer {
     id: string;
@@ -8,16 +8,24 @@ interface Customer {
 }
 
 function Customers() {
-    const data: Array<Customer> = [
-        {
-            id: '1',
-            name: 'bob',
-            city: 'Netanya',
-            phone: '03-5550000',
-        }
-    ];
+    // const data: Array<Customer> = [
+    //     {
+    //         id: '1',
+    //         name: 'bob',
+    //         city: 'Netanya',
+    //         phone: '03-5550000',
+    //     }
+    // ];
 
-    const [customers, setCustomers] = useState(data);
+    const [customers, setCustomers] = useState<Array<Customer>>([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/customers')
+            .then(res => res.json())
+            .then(json => {
+                setCustomers(json);
+            })
+    }, []);
 
     return (
         <>
