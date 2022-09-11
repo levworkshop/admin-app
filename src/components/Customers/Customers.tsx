@@ -19,13 +19,25 @@ function Customers() {
 
     const [customers, setCustomers] = useState<Array<Customer>>([]);
 
-    useEffect(() => {
-        fetch('http://localhost:3000/customers')
+    function getCustomers() {
+        const token = localStorage.getItem('token');
+        if (!token || token.length === 0) {
+            return;
+        }
+
+        fetch('http://localhost:3000/customers', {
+            method: 'GET',
+            headers: {
+                'x-auth-token': token
+            }
+        })
             .then(res => res.json())
             .then(json => {
                 setCustomers(json);
             })
-    }, []);
+    }
+
+    useEffect(getCustomers, []);
 
     return (
         <>

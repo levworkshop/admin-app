@@ -2,8 +2,7 @@ const { User } = require('../models/User');
 const joi = require('joi');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { config } = require('process');
-const { token } = require('morgan');
+const config = require('../config/dev');
 
 module.exports = {
     login: async function (req, res, next) {
@@ -28,6 +27,7 @@ module.exports = {
             if (!validPassword) throw 'Invalid password';
 
             const param = { email: value.email };
+            console.log(config);
             const token = jwt.sign(param, config.jwt_token, { expiresIn: '72800s' });
 
             res.json({
