@@ -1,7 +1,7 @@
 import { Link, Route, Routes } from 'react-router-dom';
 import './App.css';
 import LogOut from './components/auth/LogOut';
-import PrivateRouter from './components/auth/PrivateRouter';
+import PrivateRoute from './components/auth/PrivateRoute';
 import Customers from './components/Customers/Customers';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
@@ -21,9 +21,9 @@ function App() {
                 <Route
                     path='/'
                     element={
-                        <PrivateRouter>
+                        <PrivateRoute>
                             <Customers />
-                        </PrivateRouter>
+                        </PrivateRoute>
                     } />
                 <Route path='/login' element={<Login />} />
                 <Route path='/signup' element={<SignUp />} />

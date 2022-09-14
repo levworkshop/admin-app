@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 
-const PrivateRouter = (props: { children: React.ReactNode }): JSX.Element => {
+const PrivateRoute = (props: { children: React.ReactNode }): JSX.Element => {
     const { children } = props
 
     // Up to you specific app to decide how to get this value
@@ -17,4 +17,4 @@ const PrivateRouter = (props: { children: React.ReactNode }): JSX.Element => {
     )
 }
 
-export default PrivateRouter;
+export default PrivateRoute;
